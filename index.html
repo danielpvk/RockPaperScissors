@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors</title>
+    <!-- For media queries in Bootstrap. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to the jQuery Library -->
+    <script src="https://code.jquery.com/jquery-2.2.3.js"></script>
+    <!-- Bootswatch CDN link -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css" rel="stylesheet">
+     <!-- Personal stylesheet 
+    <link rel="stylesheet" href="assets/css/style.css">-->
+    <!-- Firebase script -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+   </head>
+
+<body>
+<header class="container">
+    <div class="row">
+        <div class="col-md-11">
+            <h1 class="text-right">Rock  Paper  Scissors</h1>
+        </div>
+        <div class="col-md-1">
+            <img src="assets/images/rps.png" >
+        </div>    
+    </div>
+
+</header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <h2 class="text-left">Local Player :</h2>
+                <br>
+            </div>
+            <div class="col-md-2" id="localplayer">
+                
+            </div>
+            <div class="col-md-2">
+                    <h2 class="text-left">Remote Player :</h2>
+                <br>
+            </div>
+            <div class="col-md-2" id="remoteplayer">
+            </div>
+            <div class="col-md-2">
+                <h2 class="text-left">Score :</h2>
+                <br>
+            </div>
+            <div class="col-md-2" id="score">
+            </div>
+        </div>
+        <div class="row">
+            <div class ="col-md-1" align="center" id="rock1">
+                    <img src="assets/images/rock.JPG" >
+                    <div class="overlay">
+                            <div class="text">Rock</div>
+                    </div>
+            </div>
+            <div class ="col-md-1" align="right">
+                    <img src="assets/images/paper.JPG" id="paper1">
+            </div>
+            <div class ="col-md-2" align="left">
+                    <img src="assets/images/scissors.JPG" id="scissors1">
+            </div>     
+          
+            <div class ="col-md-1" align="center">
+                    <img src="assets/images/rock.JPG" id="rock1">
+            </div>
+            <div class ="col-md-1" align="right">
+                    <img src="assets/images/paper.JPG" id="paper1">
+            </div> 
+            <div class ="col-md-1" align="left">
+                    <img src="assets/images/scissors.JPG" id="scissors1">
+            </div> 
+            <div class = "col-md-2" id="localScore">
+                    <h2 id="localScorePlayer"></h2>
+                    <tr id="localTable">
+
+                    </tr>
+            </div>
+            <div class = "col-md-2" id="remoteScore">
+                    <h2 id="remoteScorePlayer"></h2>
+                    <tr id="remoteTable">
+
+                    </tr>
+            </div>
+    
+       <!--      <div class ="col-md-2">
+            </div>  -->                               
+        </div>
+    </div>
+ <!-- App script -->
+ <script type="text/javascript" src="assets/javascript/rockpaperscissors.js"></script>
+
+</body>
+
+</html>
