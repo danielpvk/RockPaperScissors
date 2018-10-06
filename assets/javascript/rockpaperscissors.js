@@ -16,44 +16,37 @@
 
     // Alias database and sub-levels.
     var database = firebase.database();
-    var clickCounter = 0;
-    // Functions
-    // ================================================================================
-    // On Click
-    $("#rock1").on("click", function() {
-        clickCounter++;
-        debugger;
-        // **** Store Click Data to Firebase in a JSON property called clickCount *****
-        // **** Note how we are using the Firebase .set() method ****
-        // **** .ref() refers to the path you want to save your data to
-        // **** Since we left .ref() blank, it will save to the root directory
-        database.ref().set({
-         clickCount: clickCounter
-        });
-    });
-    $('#localplayer').on('click',function(event){
-      
-        var button1="#"+$(event.target).attr("id");
-        var player=event.delegateTarget.childNodes[1].value;
 
-//in this line of code we are deciding if we are player1 or player2 in firebase
-    database.ref().on("value", function(snapshot) {
-    // If Firebase has a player1, the new player will be player2
-        debugger;
-        if (snapshot.child("player1").exists()) {
-        // Set the variables for highBidder/highPrice equal to the stored values.
-        database.ref().set({
-            player2: player
-            });    
-        }
-    });
-    });
+
+
+    $("#player1").on("click", function(event) {
+        event.preventDefault();
+      
+        // Get the input values
+        var player = $("#playerName").val().trim();
+        
+        // Log the Bidder and Price (Even if not the highest)
+        console.log(player);
+      
+          // Save the new player in Firebase
+          database.ref("/players").push({
+            playerName:player,
+            connected: true
+          });
+      
+      });
+      
+
+
+
+
+
     function rockpaperscissors(){
 
         if (stage===0){
       
-            $('#localplayer').html(' <input type="text" class="form-control" placeholder="Nombre Jugador Local" aria-label="Nombre Jugador Local" aria-describedby="basic-addon2">');
-            $('#localplayer').append('<button class="btn btn-outline-secondary" id="player1" type="button">Jugar</button>');
+          //  $('#localplayer').html(' <input type="text" class="form-control" placeholder="Nombre Jugador Local" aria-label="Nombre Jugador Local" aria-describedby="basic-addon2">');
+           // $('#localplayer').append('<button class="btn btn-outline-secondary" id="player1" type="button">Jugar</button>');
         }
         else {
             $('#localplayer').html();
