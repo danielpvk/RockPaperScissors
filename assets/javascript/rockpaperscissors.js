@@ -47,7 +47,7 @@
        database.ref("/players").child(player).set({
            choose:"",
            play:false,
-           score:[]
+          
         });
 
 
@@ -64,7 +64,7 @@
         var dataArr=snapshotToArray(snapshot);
         for (var i=0; i<dataArr.length;i++)
         {
-            if (dataArr[i].player===player)
+            if (dataArr[i].key===player)
             {
                 whoIAm=i;
             }
@@ -74,30 +74,33 @@
         }
         if (dataArr.length==2){
             stage=2;
-            var g=dataArr[0].choose[0]+dataArr[1].choose[0];
-            score1=dataArr[0];
-            switch (g) {
-                case (rr): win="even";break;           
-                case (rs): win="win";break;
-                case (rp): win="lost";break;
-                case (sr): win="lost";break;
-                case (ss): win="even";break;
-                case (sp): win="win";break;
-                case (pr): win="win";break;
-                case (ps): win="lost";break;
-                case (pp): win="even";break;
+            if (dataArr[0].play&&dataArr[1].play)
+            {
+                var g=dataArr[0].choose[0]+dataArr[1].choose[0];
+                if (dataArr[0].score!=null){
+                    score1=dataArr[0].score;
+                }
+                var win="";
+                switch (g) {
+                    case ("rr"): win="even";break;           
+                    case ("rs"): win="win";break;
+                    case ("rp"): win="lost";break;
+                    case ("sr"): win="lost";break;
+                    case ("ss"): win="even";break;
+                    case ("sp"): win="win";break;
+                    case ("pr"): win="win";break;
+                    case ("ps"): win="lost";break;
+                    case ("pp"): win="even";break;
+                }
+                score1.push(win);
+                database.ref("players").child(player).update({
+                    score:score1,
+                    play:false
+                })
+                .then(function(){
+                    console.log("Document successfully updated!");
+                });
             }
-            score1.push(win);
-
-            database.ref("players").child(player).update({
-               score:score1
-            })
-            .then(function(){
-                console.log("Document successfully updated!");
-            });
-
-
-
         }
         if (dataArr.lenght>2){
             
@@ -110,7 +113,7 @@
         database.ref("players").child(player).update({
             choose:"rock",
             play:true,
-            score:[]
+      
         })
         .then(function(){
             console.log("Document successfully updated!");
