@@ -60,7 +60,8 @@
  
     ref.on("value", function(snapshot) {
         console.log(snapshot.val());
-        debugger;
+     
+
         var dataArr=snapshotToArray(snapshot);
         for (var i=0; i<dataArr.length;i++)
         {
@@ -76,32 +77,45 @@
             stage=2;
             
             if (dataArr[0].play&&dataArr[1].play)
-            {   if (whoIAm==0){
+            {   var score2=[];
+                var win2="";
+                var player2="";
+                if (whoIAm==0){
                     var g=dataArr[0].choose[0]+dataArr[1].choose[0];
                     if (dataArr[0].score!=null){
+                        debugger;
                         score1=dataArr[0].score;
+                        score2=dataArr[1].score;
                     }
+                    player2=dataArr[1].key;
                 }
                 else{
                     var g=dataArr[1].choose[0]+dataArr[0].choose[0];
                     if (dataArr[1].score!=null){
                         score1=dataArr[1].score;
+                        score2=dataArr[0].score;
                     }
+                    player2=dataArr[0].key;    
                 }
                
                 var win="";
+                
                 switch (g) {
-                    case ("rr"): win="even";break;           
-                    case ("rs"): win="win";break;
-                    case ("rp"): win="lost";break;
-                    case ("sr"): win="lost";break;
-                    case ("ss"): win="even";break;
-                    case ("sp"): win="win";break;
-                    case ("pr"): win="win";break;
-                    case ("ps"): win="lost";break;
-                    case ("pp"): win="even";break;
+                    case ("rr"): win="even";win2="even";break;           
+                    case ("rs"): win="win";win2="lost";break;
+                    case ("rp"): win="lost";win2="win";break;
+                    case ("sr"): win="lost";win2="win";break;
+                    case ("ss"): win="even";win2="even";break;
+                    case ("sp"): win="win";win2="lost";break;
+                    case ("pr"): win="win";win2="lost";break;
+                    case ("ps"): win="lost";win2="win";break;
+                    case ("pp"): win="even";win2="even";break;
                 }
                 score1.push(win);
+                score2.push(win2);
+                tableFill("#localScore",score1,player);
+                tableFill("#remoteScore",score2,player2);
+                
                 database.ref("players").child(player).update({
                     score:score1,
                     play:false
@@ -152,6 +166,14 @@
 
      });
 
+    function tableFill(table,score,p){
+        $(table).html("<tr><th><h2>"+p+"</h2></th></tr>");
+        $.each( score, function( key, value ) {
+            debugger;
+            $(table).append("<tr><td><h2>"+value+"</h2></td></tr>");
+          });
+
+    }
     function rockpaperscissors(){
 
         if (stage===0){
