@@ -74,12 +74,21 @@
         }
         if (dataArr.length==2){
             stage=2;
+            
             if (dataArr[0].play&&dataArr[1].play)
-            {
-                var g=dataArr[0].choose[0]+dataArr[1].choose[0];
-                if (dataArr[0].score!=null){
-                    score1=dataArr[0].score;
+            {   if (whoIAm==0){
+                    var g=dataArr[0].choose[0]+dataArr[1].choose[0];
+                    if (dataArr[0].score!=null){
+                        score1=dataArr[0].score;
+                    }
                 }
+                else{
+                    var g=dataArr[1].choose[0]+dataArr[0].choose[0];
+                    if (dataArr[1].score!=null){
+                        score1=dataArr[1].score;
+                    }
+                }
+               
                 var win="";
                 switch (g) {
                     case ("rr"): win="even";break;           
@@ -120,8 +129,28 @@
         });
 
      });
+     $("#paper1").on("click",function(){
+        database.ref("players").child(player).update({
+            choose:"paper",
+            play:true,
+      
+        })
+        .then(function(){
+            console.log("Document successfully updated!");
+        });
 
+     });
+     $("#scissors1").on("click",function(){
+        database.ref("players").child(player).update({
+            choose:"scissors",
+            play:true,
+      
+        })
+        .then(function(){
+            console.log("Document successfully updated!");
+        });
 
+     });
 
     function rockpaperscissors(){
 
