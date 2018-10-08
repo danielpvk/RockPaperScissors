@@ -30,67 +30,81 @@
 </header>
     <div class="container">
         <div class="row">
-            <div class="col-md-2">
-                <h2 class="text-left">Local Player :</h2>
-                <br>
-            </div>
-            <div class="col-md-2" id="localplayer">
-                    <input type="text" class="form-control" placeholder="Jugador Local" id="playerName" >
-                    <button class="btn btn-outline-secondary" id="player1" type="button" >Jugar</button>
-            </div>
-            <div class="col-md-2">
-                    <h2 class="text-left">Remote Player :</h2>
-                <br>
-            </div>
-            <div class="col-md-2" id="remoteplayer">
-            </div>
-            <div class="col-md-2">
+            <div class="col-md-4">
+                <div class="row">
+                        <div class="col-sm-6">
+                                <h2 class="text-left">Local Player :</h2>
+                                <br>
+                        </div>
+                        <div class="col-sm-6" id="localplayer">
+                                    <input type="text" class="form-control" placeholder="Jugador Local" id="playerName" >
+                                    <button class="btn btn-outline-secondary" id="player1" type="button" >Jugar</button>
+                        </div>
                 </div>
-            <div class="col-md-2">
-                <h2 class="text-right">Score :</h2>
-                <br>
+                <div class="row">
+                    <div class="panel">
+                        
+                                    <div class ="col-sm-4" align="center" id="rock1">
+                                    <img src="assets/images/rock.JPG" >
+                                    <div class="overlay">
+                                            <div class="text">Rock</div>
+                                    </div>
+                            </div>
+                            <div class ="col-sm-4" align="right">
+                                    <img src="assets/images/paper.JPG" id="paper1">
+                                    <div class="overlay">
+                                            <div class="text">Paper</div>
+                                    </div>
+                            </div>
+                            <div class ="col-sm-4" align="left">
+                                    <img src="assets/images/scissors.JPG" id="scissors1">
+                                    <div class="overlay">
+                                            <div class="text">Scissors</div>
+                                    </div>
+                            </div>  
+                    </div>
+                </div>
             </div>
-         
+            <div class="col-md-4">
+                <div class="row">
+                        <div class="col-sm-6">
+                                <h2 class="text-left">Remote Player :</h2>
+                                <br>
+                        </div>
+                        <div class="col-sm-6" id="remotePlayer">
+                        </div>
+                </div>
+                <div class="row">
+                            
+                </div>
+                        
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                        <div class="col-md-6">
+                        </div>
+                        <div class="col-md-6">
+                                <h2 class="text-right">Score :</h2>
+                                <br>
+                        </div>                       
+                </div>
+                <div class="row">
+                        <div class = "col-md-6" id="localScore">
+                                <!---   <h2 id="localScorePlayer"></h2>
+                                    <tr id="localTable">
+                
+                                    </tr>-->
+                            </div>
+                            <div class = "col-md-6" id="remoteScore">
+                                 <!---     <h2 id="remoteScorePlayer"></h2>
+                                    <tr id="remoteTable">
+                
+                                    </tr>-->
+                            </div>                            
+                </div>     
+            </div>
         </div>
-        <div class="row">
-            <div class ="col-md-1" align="center" id="rock1">
-                    <img src="assets/images/rock.JPG" >
-                    <div class="overlay">
-                            <div class="text">Rock</div>
-                    </div>
-            </div>
-            <div class ="col-md-1" align="right">
-                    <img src="assets/images/paper.JPG" id="paper1">
-                    <div class="overlay">
-                            <div class="text">Paper</div>
-                    </div>
-            </div>
-            <div class ="col-md-2" align="left">
-                    <img src="assets/images/scissors.JPG" id="scissors1">
-                    <div class="overlay">
-                            <div class="text">Scissors</div>
-                    </div>
-            </div>     
-          
-            <div class ="col-md-2" align="center">
-               
-            </div>
-       
-            <div class = "col-md-2" id="localScore">
-                <!---   <h2 id="localScorePlayer"></h2>
-                    <tr id="localTable">
 
-                    </tr>-->
-            </div>
-            <div class = "col-md-2" id="remoteScore">
-                 <!---     <h2 id="remoteScorePlayer"></h2>
-                    <tr id="remoteTable">
-
-                    </tr>-->
-            </div>
-    
-                                   
-        </div>
     </div>
  <!-- App script -->
  <script type="text/javascript" src="assets/javascript/rockpaperscissors.js"></script>

@@ -60,8 +60,8 @@
  
     ref.on("value", function(snapshot) {
         console.log(snapshot.val());
-     
-
+       
+        var player2="";
         var dataArr=snapshotToArray(snapshot);
         for (var i=0; i<dataArr.length;i++)
         {
@@ -71,15 +71,18 @@
             }
         }
         if (dataArr.length==1){
-            stage=1;
+            if (whoIAm===-1){
+                player2=dataArr[0].key;
+            }
         }
         if (dataArr.length==2){
             stage=2;
             
             if (dataArr[0].play&&dataArr[1].play)
-            {   var score2=[];
+            {   
+                var score2=[];
+
                 var win2="";
-                var player2="";
                 if (whoIAm==0){
                     var g=dataArr[0].choose[0]+dataArr[1].choose[0];
                     if (dataArr[0].score!=null){
@@ -115,8 +118,9 @@
                 score2.push(win2);
                 tableFill("#localScore",score1,player);
                 tableFill("#remoteScore",score2,player2);
-                
+                debugger;                
                 database.ref("players").child(player).update({
+
                     score:score1,
                     play:false
                 })
@@ -124,9 +128,16 @@
                     console.log("Document successfully updated!");
                 });
             }
+            else {
+                if (whoIAm===0){
+                    player2=dataArr[1].key;
+                }
+                else {player2=dataArr[0].key;}
+            }
         }
+        $("#remotePlayer").html("<h2>"+player2+"</h2>")
         if (dataArr.lenght>2){
-            
+            database.ref("players").setValue(null);
         }
      }, function (error) {
         //console.log("Error: " + error.code);
